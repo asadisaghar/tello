@@ -17,18 +17,18 @@ range.
 - Tello objects require a minimum of 2 parameters to initialize, the local IP
 address and port to bind.
     
-    drone = tello.Tello('192.168.10.2', 8888)
+        drone = tello.Tello('192.168.10.2', 8888)
 
 - Methods that require distance or speed parameters expect feet or MPH. Include
 parameter imperial=False for meters and KPH.
 
-    drone = tello.Tello('192.168.10.2', 8888, imperial=False)
+        drone = tello.Tello('192.168.10.2', 8888, imperial=False)
 
 - If you send a command to the Tello and it doesn't respond within .3 seconds, a
 RuntimeError is raised. You may specify the number of seconds to wait with the
 timeout parameter.
 
-    drone = tello.Tello('192.168.10.2', 8888, imperial=False, timeout=.5)
+        drone = tello.Tello('192.168.10.2', 8888, imperial=False, timeout=.5)
 
 - When you initialize a Tello object, it attempts to connect to the Tello and
 enter command mode. If this fails, a RuntimeError is raised.
@@ -60,8 +60,8 @@ centimeters. Realistically, this translates to .1 - 5 meters or .7 - 16.4 feet.
 - Methods that rotate require a single parameter, degrees. The SDK accepts values
 from 1 to 360. Responses are 'OK' or 'FALSE'.
 
-    drone.rotate_cw(degrees)
-    drone.rotate_ccw(degrees)
+        drone.rotate_cw(degrees)
+        drone.rotate_ccw(degrees)
 
 - The method to set speed requires a single parameter, speed. Responses are 'OK'
 or 'FALSE'.
@@ -70,24 +70,24 @@ or 'FALSE'.
 centimeters/second. Realistically, this translates to .1 to 3.6 KPH or .1 to 
 2.2 MPH.
 
-    drone.set_speed(speed)
+        drone.set_speed(speed)
 
 - The method to flip requires a single parameter, direction. The SDK accepts 'l',
 'r', 'f', 'b', 'lf', 'lb', 'rf' or 'rb'. Responses are 'OK' or 'FALSE'.
 
-    drone.flip(direction)
+        drone.flip(direction)
 
 - Methods that retrieve information from the Tello take no parameters. Responses
 are numeric values.
 
 - Get current speed in KPH or MPH:
 
-      drone.get_speed()
+        drone.get_speed()
 
 - Get percent battery life remaining:
 
-      drone.get_battery()
+        drone.get_battery()
 
 - Get elapsed flight time in seconds:
 
-      drone.get_flight_time()
+        drone.get_flight_time()
