@@ -372,3 +372,25 @@ class Tello:
 
         """
         return self.send_command('ccw %s' % degrees)
+
+    def go_sin(self, speed, delta_t, delta_deg, direction):
+
+        def rad2deg(rad):
+            return 90.*rad/math.pi
+
+        def deg2rad(deg):
+            return math.pi*deg/90.
+        
+        r = speed * delta_t
+        self.set_speed(speed)
+        self.theta = 0.
+        for deg in np.arange(0, 360, delta_deg):    
+            if self.theta<180:
+                self.rotate_cw(delta_deg)
+                self.theta += delta_deg
+            elif self.theta<360:
+                self.rotate_ccw(delta_deg)
+                self.theta += delta_deg
+            self.move(direction, r)            
+            time.sleep(delta_t)
+        
